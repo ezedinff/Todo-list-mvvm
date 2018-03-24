@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ez Todo list app</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body ng-app="todo">
+		<div class="container main" ng-controller="maincontroller">
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-0">
+					<div class="card">
+						<div class="card-title alert alert-info text-success">
+							Todo List App
+						</div>
+						<div class="card-body">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text fa fa-tasks" id="task"></span>
+									</div>
+									<input name="task" ng-model="task" type="text" class="form-control" id="task-field" placeholder="Add new task" aria-describedby="task" required>
+									<div class="invalid-feedback">
+										please Enter the task
+									</div>
+								</div>
+								<br>
+								<button ng-click="add(task)" type="submit" class="btn {{buttonClass}} pull-right">{{buttonLabel}}</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 col-sm-12">
+					<div class="card">
+						<div class="card-title alert alert-info text-success text-capitalize">
+							<i class="fa fa-tasks"></i> Your todo list
+						</div>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="todo in todos">
+							{{todo}}
+							<button  ng-click="remove($index)" class="btn btn-danger btn-sm pull-right" >
+								<i class="fa fa-trash"></i>
+							</button>
+							<button ng-click="edit($index)" class="btn btn-success btn-sm pull-right" style="margin-right: 0.5em;">
+								<i class="fa fa-edit"></i>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/app.js"></script>
+</html>
